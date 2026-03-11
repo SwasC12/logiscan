@@ -1,0 +1,38 @@
+<div class="page">
+
+  <div class="loading" *ngIf="loading">
+    <mat-spinner diameter="36"></mat-spinner>
+  </div>
+
+  <p class="empty" *ngIf="!loading && waybills.length === 0">
+    No waybills yet — tap + to create one
+  </p>
+
+  <mat-list *ngIf="!loading && waybills.length > 0">
+    <mat-list-item
+      *ngFor="let waybill of waybills"
+      class="waybill-item"
+      (click)="openWaybill(waybill.id!)">
+
+      <mat-icon matListItemIcon>description</mat-icon>
+
+      <span matListItemTitle>{{ waybill.reference }}</span>
+
+      <span matListItemLine class="meta">
+        {{ waybill.sender }} → {{ waybill.receiver }}
+      </span>
+
+      <div matListItemMeta class="status-badge"
+        [style.background]="getStatusInfo(waybill.status).color">
+        {{ getStatusInfo(waybill.status).label }}
+      </div>
+
+    </mat-list-item>
+  </mat-list>
+
+  <!-- FAB to create new waybill -->
+  <button mat-fab color="primary" class="fab" (click)="createNew()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</div>

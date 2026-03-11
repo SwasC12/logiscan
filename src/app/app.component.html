@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" class="top-bar">
+  <mat-icon>local_shipping</mat-icon>
+  <span class="app-title">LogiScan</span>
+</mat-toolbar>
+
+<main class="page-content">
+  <router-outlet />
+</main>
+
+<nav class="bottom-nav">
+  <a routerLink="/scan" routerLinkActive="active" class="nav-item">
+    <mat-icon>qr_code_scanner</mat-icon>
+    <span>Scan</span>
+  </a>
+  <a routerLink="/history" routerLinkActive="active" class="nav-item">
+    <mat-icon>history</mat-icon>
+    <span>History</span>
+  </a>
+  <a routerLink="/waybill" routerLinkActive="active" class="nav-item">
+    <mat-icon>add_box</mat-icon>
+    <span>Waybill</span>
+  </a>
+</nav>

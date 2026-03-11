@@ -1,0 +1,24 @@
+.page {
+  padding: 8px 0;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 60px;
+}
+
+.empty {
+  text-align: center;
+  color: #888;
+  padding: 60px 24px;
+}
+
+.scan-item {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.date {
+  font-size: 0.75rem;
+  color: #999;
+}

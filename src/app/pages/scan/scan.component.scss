@@ -1,0 +1,61 @@
+.page {
+  height: 100%;
+}
+
+/* ── Idle view ── */
+.idle-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 16px;
+}
+
+.hero-icon {
+  font-size: 80px;
+  width: 80px;
+  height: 80px;
+  color: #1976d2;
+  opacity: 0.3;
+}
+
+.result-card {
+  width: 100%;
+  max-width: 400px;
+}
+
+.result-text {
+  word-break: break-all;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ── Scanner overlay (camera is behind the WebView) ── */
+.scan-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: transparent;
+}
+
+.scan-frame {
+  width: 260px;
+  height: 260px;
+  border: 3px solid white;
+  border-radius: 12px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.45);
+}
+
+.scan-hint {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.cancel-btn {
+  position: fixed;
+  bottom: 80px;
+}

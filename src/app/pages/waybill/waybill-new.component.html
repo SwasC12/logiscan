@@ -1,0 +1,38 @@
+<div class="page">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Reference Number</mat-label>
+    <input matInput [(ngModel)]="form.reference" placeholder="e.g. WB-2024-001" />
+    <mat-icon matSuffix>tag</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Sender</mat-label>
+    <input matInput [(ngModel)]="form.sender" placeholder="Sender name or company" />
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Receiver</mat-label>
+    <input matInput [(ngModel)]="form.receiver" placeholder="Receiver name or company" />
+    <mat-icon matSuffix>person_pin</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="form.description" rows="3" placeholder="Contents, notes, etc."></textarea>
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-stroked-button (click)="cancel()">Cancel</button>
+
+    <button mat-flat-button color="primary"
+      [disabled]="!isValid || saving"
+      (click)="submit()">
+      <mat-spinner *ngIf="saving" diameter="20"></mat-spinner>
+      <mat-icon *ngIf="!saving">save</mat-icon>
+      {{ saving ? 'Saving...' : 'Create Waybill' }}
+    </button>
+  </div>
+
+</div>

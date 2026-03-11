@@ -1,0 +1,19 @@
+<div class="page">
+
+  <div class="loading" *ngIf="loading">
+    <mat-spinner diameter="36"></mat-spinner>
+  </div>
+
+  <p class="empty" *ngIf="!loading && scans.length === 0">
+    No scans yet — head to the Scan tab to get started
+  </p>
+
+  <mat-list *ngIf="!loading && scans.length > 0">
+    <mat-list-item *ngFor="let scan of scans" class="scan-item">
+      <mat-icon matListItemIcon color="primary">barcode_reader</mat-icon>
+      <span matListItemTitle>{{ scan.barcode }}</span>
+      <span matListItemLine class="date">{{ formatDate(scan.scanned_at!) }}</span>
+    </mat-list-item>
+  </mat-list>
+
+</div>

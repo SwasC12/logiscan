@@ -1,0 +1,70 @@
+<div class="page">
+
+  <div class="loading" *ngIf="loading">
+    <mat-spinner diameter="36"></mat-spinner>
+  </div>
+
+  <ng-container *ngIf="!loading && waybill">
+
+    <!-- Current status banner -->
+    <div class="status-banner" [style.background]="getStatusInfo(waybill.status).color">
+      <mat-icon>{{ waybill.status === 'delivered' ? 'check_circle' : 'local_shipping' }}</mat-icon>
+      <span>{{ getStatusInfo(waybill.status).label }}</span>
+    </div>
+
+    <!-- Waybill details -->
+    <div class="details">
+      <div class="detail-row">
+        <span class="label">Reference</span>
+        <span class="value">{{ waybill.reference }}</span>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="detail-row">
+        <span class="label">Sender</span>
+        <span class="value">{{ waybill.sender }}</span>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="detail-row">
+        <span class="label">Receiver</span>
+        <span class="value">{{ waybill.receiver }}</span>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="detail-row" *ngIf="waybill.description">
+        <span class="label">Description</span>
+        <span class="value">{{ waybill.description }}</span>
+      </div>
+      <mat-divider *ngIf="waybill.description"></mat-divider>
+      <div class="detail-row">
+        <span class="label">Created</span>
+        <span class="value">{{ formatDate(waybill.created_at!) }}</span>
+      </div>
+    </div>
+
+    <!-- Status update buttons -->
+    <div class="status-section">
+      <p class="section-label">Update Status</p>
+      <div class="status-buttons">
+        <button
+          *ngFor="let s of statuses"
+          mat-flat-button
+          [style.background]="waybill.status === s.value ? s.color : ''"
+          [style.color]="waybill.status === s.value ? 'white' : ''"
+          [disabled]="updating"
+          (click)="setStatus(s.value)">
+          {{ s.label }}
+        </button>
+      </div>
+      <mat-spinner *ngIf="updating" diameter="24" class="spinner"></mat-spinner>
+    </div>
+
+  </ng-container>
+
+  <!-- Back button -->
+  <div class="back-row">
+    <button mat-stroked-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+      Back to Waybills
+    </button>
+  </div>
+
+</div>

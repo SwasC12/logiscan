@@ -1,0 +1,36 @@
+<div class="page">
+
+  <!-- Idle state -->
+  <div class="idle-view" *ngIf="!scanning">
+    <mat-icon class="hero-icon">qr_code_scanner</mat-icon>
+
+    <mat-card *ngIf="lastResult" class="result-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>check_circle</mat-icon>
+        <mat-card-title>Scan Saved</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="result-text">{{ lastResult }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <p *ngIf="!lastResult">Point your camera at a barcode or QR code</p>
+
+    <button mat-fab extended color="primary" (click)="startScan()" [disabled]="saving">
+      <mat-icon>qr_code_scanner</mat-icon>
+      {{ lastResult ? 'Scan Again' : 'Start Scan' }}
+    </button>
+
+    <mat-spinner *ngIf="saving" diameter="28"></mat-spinner>
+  </div>
+
+  <!-- Scanner overlay -->
+  <div class="scan-overlay" *ngIf="scanning">
+    <div class="scan-frame"></div>
+    <p class="scan-hint">Align barcode within the frame</p>
+    <button mat-fab color="warn" class="cancel-btn" (click)="stopScan()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+</div>
